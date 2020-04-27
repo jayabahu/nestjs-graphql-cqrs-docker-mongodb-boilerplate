@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  app:
+    build:
+      context: .
+      target: development
+    command: yarn start:debug
+    restart: always
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/dist
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+  node-modules:

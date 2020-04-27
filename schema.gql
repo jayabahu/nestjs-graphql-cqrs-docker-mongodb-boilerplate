@@ -1,0 +1,49 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Product {
+  id: ID!
+  name: String!
+  description: String
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+}
+
+type UserWithToken {
+  user: User!
+  token: String!
+}
+
+type Query {
+  products: [Product!]!
+  userCurrent: User!
+}
+
+type Mutation {
+  productCreate(input: CreateProductInput!): Product!
+  login(input: LoginInput!): UserWithToken!
+  register(input: RegisterInput!): UserWithToken!
+}
+
+input CreateProductInput {
+  name: String!
+  description: String
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input RegisterInput {
+  name: String!
+  username: String!
+  email: String!
+  password: String!
+}
